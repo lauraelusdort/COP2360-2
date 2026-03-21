@@ -1,0 +1,15 @@
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\bin\Debug\net10.0\Module7GroupProject.exe
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\bin\Debug\net10.0\Module7GroupProject.deps.json
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\bin\Debug\net10.0\Module7GroupProject.runtimeconfig.json
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\bin\Debug\net10.0\Module7GroupProject.dll
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\bin\Debug\net10.0\Module7GroupProject.pdb
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\obj\Debug\net10.0\Module7GroupProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\obj\Debug\net10.0\Module7GroupProject.AssemblyInfoInputs.cache
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\obj\Debug\net10.0\Module7GroupProject.AssemblyInfo.cs
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\obj\Debug\net10.0\Module7GroupProject.csproj.CoreCompileInputs.cache
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\obj\Debug\net10.0\Module7GroupProject.sourcelink.json
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\obj\Debug\net10.0\Module7GroupProject.dll
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\obj\Debug\net10.0\refint\Module7GroupProject.dll
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\obj\Debug\net10.0\Module7GroupProject.pdb
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\obj\Debug\net10.0\Module7GroupProject.genruntimeconfig.cache
+C:\Users\laura\OneDrive\Desktop\COP2360-2\Module7GroupProject\obj\Debug\net10.0\ref\Module7GroupProject.dll

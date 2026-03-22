@@ -5,133 +5,195 @@ class Program
 {
     static void Main(string[] args)
     {
-        /*Create a dictionary where each key is a category
-        and each value is a list of programming languages in that category*/
-        Dictionary<string, List<string>> programmingLanguages = new Dictionary<string, List<string>>();
+        // Dictionary storing keys and multiple values
+        Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
 
-        // This variable keeps the menu running until the user chooses to exit
         bool running = true;
 
         while (running)
         {
-            //Display the menu options to the user
-            Console.WriteLine("\n Programming Languages Dictionary:");
-
-            // 1: Add the starter categories and languages to the dictionary
+            Console.WriteLine("\n==== DICTIONARY MENU ====");
             Console.WriteLine("1. Populate Dictionary");
-
-            // 2: Show all the categories and their associated programming languages
             Console.WriteLine("2. Display Dictionary");
-
-            // 3: Remove an existing category from the dictionary
-            Console.WriteLine("3. Remove a Category");
-
-            // 4: Add a new category and language to the dictionary
-            Console.WriteLine("4. Add New Category and Language");
-
-            // 5: Add a new language to an existing category
-            Console.WriteLine("5. Add Language to Existing Category");
-
-            // 6: Sort the categories in the dictionary alphabetically and display them
-            Console.WriteLine("6. Sort Categories");
-
-            // Exit the program
+            Console.WriteLine("3. Remove a Key");
+            Console.WriteLine("4. Add New Key & Value");
+            Console.WriteLine("5. Add Value to Existing Key");
+            Console.WriteLine("6. Sort Keys");
             Console.WriteLine("7. Exit");
 
-            // Prompt the user to enter a menu option
-            Console.Write("Enter your choice: ");
+            Console.Write("Enter choice: ");
+            string input = Console.ReadLine() ?? "";
 
-            string input = Console.ReadLine(); // Read the user's input
-
-            int choice; // This variable will store the converted number choice
-
-            // Validate the user's input to ensure it's a number between 1 and 7
-            if (!int.TryParse(input, out choice) || choice < 1 || choice > 7)
+            if (!int.TryParse(input, out int choice))
             {
-                Console.WriteLine("Invalid input. Please enter a number between 1 and 7.");
-                continue; // Skip the rest of the loop and prompt again
+                Console.WriteLine("Invalid input. Please enter a number.");
+                continue;
             }
 
-            // Use a switch statement to handle the user's menu choice
             switch (choice)
             {
                 case 1:
-                    // Call a method to populate the dictionary with starter categories and languages
-                    PopulateDictionary(programmingLanguages);
+                    Populate(dictionary);
                     break;
+
                 case 2:
-                    // Call a method to display all categories and their associated programming languages
-                    DisplayDictionary(programmingLanguages);
+                    Display(dictionary);
                     break;
+
                 case 3:
-                    // Call a method to remove an existing category from the dictionary
-                    RemoveCategory(programmingLanguages);
+                    RemoveKey(dictionary);
                     break;
+
                 case 4:
-                    // Call a method to add a new category and language to the dictionary
-                    AddNewCategoryAndLanguage(programmingLanguages);
+                    AddNewKey(dictionary);
                     break;
+
                 case 5:
-                    // Call a method to add a new language to an existing category
-                    AddLanguageToExistingCategory(programmingLanguages);
+                    AddValue(dictionary);
                     break;
+
                 case 6:
-                    // Call a method to sort the categories in the dictionary alphabetically and display them
-                    SortCategories(programmingLanguages);
+                    SortKeys(dictionary);
                     break;
+
                 case 7:
-                    // Set running to false to stop the loop and exit the program
                     running = false;
-                    Console.WriteLine("Exiting the program. Goodbye!");
                     break;
 
                 default:
-                    // Runs if the user enters a number outside the valid range, which should not happen due to validation, but is included as a safety net
-                    Console.WriteLine("An unexpected error occurred. Please try again.");
+                    Console.WriteLine("Invalid option.");
                     break;
             }
         }
     }
 
-    // FUNCTION DEFINITIONS (Franceska will fill these in the methods below)
-
-    // Adds starting categories and languages to the dictionary
-    static void PopulateDictionary(Dictionary<string, List<string>> dict)
+    // a. Populate dictionary with sample data
+    static void Populate(Dictionary<string, List<string>> dict)
     {
-        //Franceska
+        dict["Students"] = new List<string> { "John", "Maria", "Alex" };
+        dict["Courses"] = new List<string> { "Math", "Science", "IT" };
+        dict["Languages"] = new List<string> { "C#", "Java", "Python" };
+
+        Console.WriteLine("Dictionary populated successfully.");
     }
 
-    // Displays all categories and their associated programming languages
-    static void DisplayDictionary(Dictionary<string, List<string>> dict)
+    // b. Display dictionary using foreach enumeration
+    static void Display(Dictionary<string, List<string>> dict)
     {
-        //Franceska
+        if (dict.Count == 0)
+        {
+            Console.WriteLine("Dictionary is empty.");
+            return;
+        }
+
+        Console.WriteLine("\n--- Dictionary Contents ---");
+
+        foreach (var pair in dict)
+        {
+            Console.Write(pair.Key + ": ");
+
+            foreach (var value in pair.Value)
+            {
+                Console.Write(value + " ");
+            }
+
+            Console.WriteLine();
+        }
     }
 
-    // Removes an existing category from the dictionary
-    static void RemoveCategory(Dictionary<string, List<string>> dict)
+    // c. Remove a key
+    static void RemoveKey(Dictionary<string, List<string>> dict)
     {
-        //Franceska
+        Console.Write("Enter key to remove: ");
+        string key = Console.ReadLine() ?? "";
+
+        if (string.IsNullOrWhiteSpace(key))
+        {
+            Console.WriteLine("Invalid key.");
+            return;
+        }
+
+        if (dict.Remove(key))
+            Console.WriteLine("Key removed successfully.");
+        else
+            Console.WriteLine("Key not found.");
     }
 
-    // Adds a new category and language to the dictionary
-    static void AddNewCategoryAndLanguage(Dictionary<string, List<string>> dict)
+    // d. Add new key and value
+    static void AddNewKey(Dictionary<string, List<string>> dict)
     {
-        //Franceska
+        Console.Write("Enter new key: ");
+        string key = Console.ReadLine() ?? "";
+
+        if (string.IsNullOrWhiteSpace(key))
+        {
+            Console.WriteLine("Invalid key.");
+            return;
+        }
+
+        if (dict.ContainsKey(key))
+        {
+            Console.WriteLine("Key already exists.");
+            return;
+        }
+
+        Console.Write("Enter value: ");
+        string value = Console.ReadLine() ?? "";
+
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            Console.WriteLine("Invalid value.");
+            return;
+        }
+
+        dict[key] = new List<string> { value };
+
+        Console.WriteLine("New key and value added successfully.");
     }
 
-    // Adds a new language to an existing category
-    static void AddLanguageToExistingCategory(Dictionary<string, List<string>> dict)
+    // e. Add value to existing key
+    static void AddValue(Dictionary<string, List<string>> dict)
     {
-        //Franceska
+        Console.Write("Enter existing key: ");
+        string key = Console.ReadLine() ?? "";
+
+        if (!dict.ContainsKey(key))
+        {
+            Console.WriteLine("Key not found.");
+            return;
+        }
+
+        Console.Write("Enter value to add: ");
+        string value = Console.ReadLine() ?? "";
+
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            Console.WriteLine("Invalid value.");
+            return;
+        }
+
+        dict[key].Add(value);
+
+        Console.WriteLine("Value added successfully.");
     }
 
-    // Sorts the categories in the dictionary alphabetically and displays them
-    static void SortCategories(Dictionary<string, List<string>> dict)
+    // f. Sort keys
+    static void SortKeys(Dictionary<string, List<string>> dict)
     {
-        //Franceska
-    }
+        if (dict.Count == 0)
+        {
+            Console.WriteLine("Dictionary is empty.");
+            return;
+        }
 
+        List<string> keys = new List<string>(dict.Keys);
+        keys.Sort();
+
+        Console.WriteLine("\n--- Sorted Keys ---");
+
+        foreach (var key in keys)
+        {
+            Console.WriteLine(key);
+        }
+    }
 }
-
-
-

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\laura\\OneDrive\\Desktop\\COP2360-2\\Module7GroupProject\\Module7GroupProject.csproj": {}
+    "/Users/sashafrancois/Desktop/Module7GP/COP2360-2/Module7GroupProject/Module7GroupProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\laura\\OneDrive\\Desktop\\COP2360-2\\Module7GroupProject\\Module7GroupProject.csproj": {
+    "/Users/sashafrancois/Desktop/Module7GP/COP2360-2/Module7GroupProject/Module7GroupProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\laura\\OneDrive\\Desktop\\COP2360-2\\Module7GroupProject\\Module7GroupProject.csproj",
+        "projectUniqueName": "/Users/sashafrancois/Desktop/Module7GP/COP2360-2/Module7GroupProject/Module7GroupProject.csproj",
         "projectName": "Module7GroupProject",
-        "projectPath": "C:\\Users\\laura\\OneDrive\\Desktop\\COP2360-2\\Module7GroupProject\\Module7GroupProject.csproj",
-        "packagesPath": "C:\\Users\\laura\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\laura\\OneDrive\\Desktop\\COP2360-2\\Module7GroupProject\\obj\\",
+        "projectPath": "/Users/sashafrancois/Desktop/Module7GP/COP2360-2/Module7GroupProject/Module7GroupProject.csproj",
+        "packagesPath": "/Users/sashafrancois/.nuget/packages/",
+        "outputPath": "/Users/sashafrancois/Desktop/Module7GP/COP2360-2/Module7GroupProject/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\laura\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/sashafrancois/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

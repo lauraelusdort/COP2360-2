@@ -1,84 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Dictionary storing keys and multiple values
-        Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
+        Dictionary<string, List<string>> programmingLanguages = new Dictionary<string, List<string>>();
 
         bool running = true;
 
         while (running)
         {
-            Console.WriteLine("\n==== DICTIONARY MENU ====");
+            Console.WriteLine("\n=== Programming Languages Dictionary ===");
             Console.WriteLine("1. Populate Dictionary");
             Console.WriteLine("2. Display Dictionary");
-            Console.WriteLine("3. Remove a Key");
-            Console.WriteLine("4. Add New Key & Value");
-            Console.WriteLine("5. Add Value to Existing Key");
-            Console.WriteLine("6. Sort Keys");
+            Console.WriteLine("3. Remove a Category");
+            Console.WriteLine("4. Add New Category and Language");
+            Console.WriteLine("5. Add Language to Existing Category");
+            Console.WriteLine("6. Sort Categories");
             Console.WriteLine("7. Exit");
 
-            Console.Write("Enter choice: ");
+            Console.Write("Enter your choice: ");
             string input = Console.ReadLine() ?? "";
 
-            if (!int.TryParse(input, out int choice))
+            if (!int.TryParse(input, out int choice) || choice < 1 || choice > 7)
             {
-                Console.WriteLine("Invalid input. Please enter a number.");
+                Console.WriteLine("Invalid input. Try again.");
                 continue;
             }
 
             switch (choice)
             {
                 case 1:
-                    Populate(dictionary);
+                    PopulateDictionary(programmingLanguages);
                     break;
-
                 case 2:
-                    Display(dictionary);
+                    DisplayDictionary(programmingLanguages);
                     break;
-
                 case 3:
-                    RemoveKey(dictionary);
+                    RemoveCategory(programmingLanguages);
                     break;
-
                 case 4:
-                    AddNewKey(dictionary);
+                    AddNewCategoryAndLanguage(programmingLanguages);
                     break;
-
                 case 5:
-                    AddValue(dictionary);
+                    AddLanguageToExistingCategory(programmingLanguages);
                     break;
-
                 case 6:
-                    SortKeys(dictionary);
+                    SortCategories(programmingLanguages);
                     break;
-
                 case 7:
                     running = false;
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine("Goodbye!");
                     break;
             }
         }
     }
 
-    // a. Populate dictionary with sample data
-    static void Populate(Dictionary<string, List<string>> dict)
+    static void PopulateDictionary(Dictionary<string, List<string>> dict)
     {
-        dict["Students"] = new List<string> { "John", "Maria", "Alex" };
-        dict["Courses"] = new List<string> { "Math", "Science", "IT" };
-        dict["Languages"] = new List<string> { "C#", "Java", "Python" };
+        dict.Clear();
 
-        Console.WriteLine("Dictionary populated successfully.");
+        dict["Frontend"] = new List<string> { "HTML", "CSS", "JavaScript" };
+        dict["Backend"] = new List<string> { "C#", "Java", "Python" };
+        dict["Mobile"] = new List<string> { "Swift", "Kotlin" };
+
+        Console.WriteLine("Dictionary populated successfully!");
     }
 
-    // b. Display dictionary using foreach enumeration
-    static void Display(Dictionary<string, List<string>> dict)
+    static void DisplayDictionary(Dictionary<string, List<string>> dict)
     {
         if (dict.Count == 0)
         {
@@ -86,99 +77,71 @@ class Program
             return;
         }
 
-        Console.WriteLine("\n--- Dictionary Contents ---");
-
-        foreach (var pair in dict)
+        foreach (var category in dict)
         {
-            Console.Write(pair.Key + ": ");
+            Console.WriteLine($"\n{category.Key}:");
 
-            foreach (var value in pair.Value)
+            foreach (var lang in category.Value)
             {
-                Console.Write(value + " ");
+                Console.WriteLine($" - {lang}");
             }
-
-            Console.WriteLine();
         }
     }
 
-    // c. Remove a key
-    static void RemoveKey(Dictionary<string, List<string>> dict)
+    static void RemoveCategory(Dictionary<string, List<string>> dict)
     {
-        Console.Write("Enter key to remove: ");
-        string key = Console.ReadLine() ?? "";
+        Console.Write("Enter category to remove: ");
+        string category = Console.ReadLine() ?? "";
 
-        if (string.IsNullOrWhiteSpace(key))
+        if (dict.Remove(category))
         {
-            Console.WriteLine("Invalid key.");
-            return;
+            Console.WriteLine("Category removed.");
         }
-
-        if (dict.Remove(key))
-            Console.WriteLine("Key removed successfully.");
         else
-            Console.WriteLine("Key not found.");
+        {
+            Console.WriteLine("Category not found.");
+        }
     }
 
-    // d. Add new key and value
-    static void AddNewKey(Dictionary<string, List<string>> dict)
+    static void AddNewCategoryAndLanguage(Dictionary<string, List<string>> dict)
     {
-        Console.Write("Enter new key: ");
-        string key = Console.ReadLine() ?? "";
+        Console.Write("Enter new category: ");
+        string category = Console.ReadLine() ?? "";
 
-        if (string.IsNullOrWhiteSpace(key))
+        if (dict.ContainsKey(category))
         {
-            Console.WriteLine("Invalid key.");
+            Console.WriteLine("Category already exists.");
             return;
         }
 
-        if (dict.ContainsKey(key))
-        {
-            Console.WriteLine("Key already exists.");
-            return;
-        }
+        Console.Write("Enter programming language: ");
+        string language = Console.ReadLine() ?? "";
 
-        Console.Write("Enter value: ");
-        string value = Console.ReadLine() ?? "";
+        dict[category] = new List<string> { language };
 
-        if (string.IsNullOrWhiteSpace(value))
-        {
-            Console.WriteLine("Invalid value.");
-            return;
-        }
-
-        dict[key] = new List<string> { value };
-
-        Console.WriteLine("New key and value added successfully.");
+        Console.WriteLine("New category added.");
     }
 
-    // e. Add value to existing key
-    static void AddValue(Dictionary<string, List<string>> dict)
+    static void AddLanguageToExistingCategory(Dictionary<string, List<string>> dict)
     {
-        Console.Write("Enter existing key: ");
-        string key = Console.ReadLine() ?? "";
+        Console.Write("Enter category: ");
+        string category = Console.ReadLine() ?? "";
 
-        if (!dict.ContainsKey(key))
+        if (!dict.ContainsKey(category))
         {
-            Console.WriteLine("Key not found.");
+            Console.WriteLine("Category not found.");
             return;
         }
 
-        Console.Write("Enter value to add: ");
-        string value = Console.ReadLine() ?? "";
+        Console.Write("Enter new language: ");
+        string language = Console.ReadLine() ?? "";
 
-        if (string.IsNullOrWhiteSpace(value))
-        {
-            Console.WriteLine("Invalid value.");
-            return;
-        }
+        dict[category].Add(language);
 
-        dict[key].Add(value);
-
-        Console.WriteLine("Value added successfully.");
+        Console.WriteLine("Language added.");
     }
 
-    // f. Sort keys
-    static void SortKeys(Dictionary<string, List<string>> dict)
+    static void SortCategories(Dictionary<string, List<string>> dict)
     {
         if (dict.Count == 0)
         {
@@ -186,12 +149,10 @@ class Program
             return;
         }
 
-        List<string> keys = new List<string>(dict.Keys);
-        keys.Sort();
+        var sorted = dict.Keys.OrderBy(k => k);
 
-        Console.WriteLine("\n--- Sorted Keys ---");
-
-        foreach (var key in keys)
+        Console.WriteLine("\nSorted Categories:");
+        foreach (var key in sorted)
         {
             Console.WriteLine(key);
         }

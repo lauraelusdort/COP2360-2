@@ -1,2 +1,2 @@
 # COP2360-2
-C+
+Repository for C# Programming

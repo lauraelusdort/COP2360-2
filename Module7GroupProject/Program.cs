@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Group Project: Programming Languages Dictionary
+// Laura Elusdort and Franceska Francois 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
